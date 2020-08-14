@@ -1,0 +1,47 @@
+﻿<Window x:Class="ClientFacturacion.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientFacturacion"
+        xmlns:viewmodels="clr-namespace:ClientFacturacion.ViewModels"
+        xmlns:views="clr-namespace:ClientFacturacion.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="573" Width="1386" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <DataTemplate x:Name="InicioTemplate" DataType="{x:Type viewmodels:Inicio}">
+            <views:Inicio DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="FacturaTemplate" DataType="{x:Type viewmodels:ConsultaFacturas}">
+            <views:ConsultaFacturas DataContext="{Binding}"/>
+        </DataTemplate>
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="image/FacturaLogo.png" Stretch="None"/>
+    </Window.Background>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Background="Black" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5">
+            <StackPanel>
+                <Button Content="Inicio" Click="btnInicio_click"/>
+                <Button Content="Consulta de Facturas" Click="btnConsultaFacturas"/>
+            </StackPanel>
+        </DockPanel>
+
+        <ContentControl Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5" Content="{Binding}"/>
+
+    </Grid>
+</Window>
